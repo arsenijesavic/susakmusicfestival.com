@@ -1,7 +1,7 @@
 import React from 'react'
 import { Flex, Box } from 'grid-styled'
 import Layout from '../layout'
-import { Hero, Program, Artists } from '../sections'
+import { Hero, Program, Artists, History, Contact } from '../sections'
 
 const IndexPage = () => (
   <Layout>
@@ -16,6 +16,12 @@ const IndexPage = () => (
           </Box>
           <Box width={1} mx={4} mt={6}>
             <Artists />
+          </Box>
+          <Box width={1} mx={4} mt={6}>
+            <History />
+          </Box>
+          <Box width={1} mx={4} mt={6}>
+            <Contact />
           </Box>
         </Flex>
       </Box>

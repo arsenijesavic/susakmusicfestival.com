@@ -24,7 +24,6 @@ export default Program
 const DayWrap = styled.div`
   width: 100%;
   position: relative;
-  border-right: 1px solid rgba(0, 0, 0, 0.5);
   padding: 1rem;
   > ul {
     > li {

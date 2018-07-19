@@ -2,13 +2,19 @@ import React from 'react'
 import { Flex, Box } from 'grid-styled'
 import styled from 'styled-components'
 
+const FlexCustom = Flex.extend``
+
 const Artists = () => (
-  <Flex flexWrap="wrap">
+  <FlexCustom flexWrap="wrap">
     <Box width={1}>
       <h1 style={{ padding: '1em 0 ' }}>Artist</h1>
     </Box>
     <Box width={1 / 3}>
-      <Artist name="Minka Popović" role="piano" image="minka-popovic.jpg" />
+      <Artist
+        name="Minka Popović"
+        instrument="piano"
+        image="minka-popovic.jpg"
+      />
       <Artist name="Teodor Ganev" image="teodor-ganev.jpg" />
       <Artist name="Furiant Kvartet" image="furiant.jpg" />
     </Box>
@@ -22,7 +28,7 @@ const Artists = () => (
       <Artist name="Tomaž Močilnik" image="tomaz-mocilnik.jpg" />
       <Artist name="Marko Župan" image="marko-zupan.jpg" />
     </Box>
-  </Flex>
+  </FlexCustom>
 )
 
 export default Artists
@@ -32,14 +38,21 @@ const ArtistWrap = styled.div`
   height: 25vh;
   position: relative;
   cursor: pointer;
+  transition: all 0.3s ease-in-out;
 
   > div {
-    display: none;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
   }
 
   &:hover {
+    height: 50vh;
     > div {
-      display: block;
+      opacity: 1;
+    }
+    > img {
+      filter: grayscale(1);
+      object-position: 50% 50%;
     }
   }
 
@@ -48,6 +61,7 @@ const ArtistWrap = styled.div`
     height: 100%;
     object-fit: cover;
     object-position: 0% 30%;
+    transition: all 0.1s ease-in-out;
   }
 `
 const ArtistOverflow = styled.div`
@@ -56,6 +70,7 @@ const ArtistOverflow = styled.div`
   right: 0;
   bottom: 0;
   left: 0;
+  z-index: 900;
   width: 100%;
   height: 100%;
   background: rgba(255, 255, 255, 0.9);
@@ -64,11 +79,11 @@ const ArtistOverflow = styled.div`
     margin: 0;
   }
 `
-const Artist = ({ name, role, image }) => (
+const Artist = ({ name, instrument, image }) => (
   <ArtistWrap>
     <ArtistOverflow>
       <h3>{name}</h3>
-      <p>{role}</p>
+      <p>{instrument}</p>
     </ArtistOverflow>
     <img src={`static/images/${image}`} alt="" />
   </ArtistWrap>
